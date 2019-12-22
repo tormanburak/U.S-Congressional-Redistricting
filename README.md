@@ -11,6 +11,7 @@ The system will allow for the generation of congressional district boundaries wi
 <ul>
 <b>GUI</b> - the system will include a Web user interface in which users interact with the system. The GUI will allow users to select a state to analyze and display actual congressional districts in a map of the selected state, while presenting data associated with congressional districting (e.g., measures of the effect of gerrymandering).<br>
 
+
 <b>Database</b> - Data used by the system is contained in a 3-state database. This data includes congressional election results for the two most recent elections (2016 and 2018) and presidential election results for 2016. The system also includes geospatial data describing the boundary of each state, congressional district, interim district, and voting precinct.<br>
 
 <b>Majority-Minority Suitability (Phase 0)</b> - System includes a feature for the user to determine if a state complies with the Supreme Court requirements related to the Voting Rights Act. For Majority-Minority districts to be created, the court required that 1) the district be sufficiently large and compact, 2) the minority group is politically cohesive, and 3) the white majority votes as a bloc.<br>
