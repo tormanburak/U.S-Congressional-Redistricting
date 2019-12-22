@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+          integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+          crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+            integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+            crossorigin=""></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"
+            type="text/javascript"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript" src="Scripts/map.js"></script>
+    <script type="text/javascript" src="Scripts/main.js"></script>
+    <script type="text/javascript" src="Scripts/chart.js"></script>
+    <script type="text/javascript" src="Scripts/table.js"></script>
+    <script type="text/javascript" src="Scripts/phase_0.js"></script>
+    <script type="text/javascript" src="Scripts/phase_1.js"></script>
+    <script type="text/javascript" src="Scripts/phase_2.js"></script>
+    <script type="text/javascript" src="Scripts/turf.min.js"></script>
+
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/infoSidebarStyle.css"/>
+    <link rel="stylesheet" href="css/leftSidebarStyle.css"/>
+</head>
+
+<body>
+
+
+<div class="toolbar" id="toolbar">
+    <div id="displayBtn">
+        <button id="display-precinct" onclick="clickOnDisplayPrecincts()">Display Precinct</button>
+        <button id="display-district" onclick="clickOnDisplayDistricts()">Display District</button>
+    </div>
+    <div id="infoSlider">
+        <a href="#" onclick="openInfo()"class="infoOpenBtn">&#9776;</a>
+    </div>
+    <div class="pistonsImg">
+        <img src="img/pistons.png">
+    </div>
+    <div id="input">
+        <a href="#" onclick="openNav()"class="openbtn">&#9776;</a>
+    </div>
+</div>
+
+<div class="sidebar" id="mySidebar">
+    <a href="javascript:void(0)" class="closebtn" id="inputSlider" onclick="closeNav()">&times;</a>
+    <nav class="navigation">
+        <ul class="mainmenu">
+            <div>
+                <img src="img/settings.png" >
+            </div>
+            <li ><a href="">Redistricting policy</a>
+                <ul class="submenu">
+                    <li>
+                        <div>
+                            <a href="https://ballotpedia.org/Redistricting_in_Kentucky" target="_blank">Kentucky</a>
+                            <a href="https://ballotpedia.org/Redistricting_in_Louisiana" target="_blank">Louisiana</a>
+                            <a href="https://ballotpedia.org/Redistricting_in_Texas" target="_blank">Texas</a>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li class="menuTop"><a href="">Initialization</a>
+                <ul class="submenu" id="initialization">
+                    <select id="dropdown" onchange="setUpForTheSelectedState();">
+                        <option value="Default">Select a State</option>
+                        <option value="KY">Kentucky</option>
+                        <option value="LA">Louisiana</option>
+                        <option value="TX">Texas</option>
+                    </select>
+                    <li>
+                        <select id="votingYearDropDown" onchange="checkVotingDropDown(),showBothStateCharts()">
+                            <option value="Default">Select a Voting Year</option>
+                            <option value="2016">2016</option>
+                            <option value="2018" id="2018VotingYear">2018</option>
+                        </select>
+                    </li>
+                    <li>
+                        <select id="votingType" onchange="checkVotingDropDown(),showBothStateCharts()">
+                            <option value="Default">Select Voting Type</option>
+                            <option value="Congressional">Congressional</option>
+                            <option value="Presidential" id="Presidential">Presidential</option>
+                        </select>
+                    </li>
+                    <li>
+                        <select id="colorTheme" onchange="changeColor()" >
+                            <option value="Default">Select Color Theme</option>
+                            <option value="Red">Red</option>
+                            <option value="Blue">Blue</option>
+                            <option value="Dark" id="colorfulTheme">Dark</option>
+                        </select>
+                    </li>
+                </ul>
+            </li>
+            <li ><a href="">Phase 0</a>
+                <ul class="submenu">
+                    <li class="pop-slider">
+                        <div data-role="rangeslider">
+                            <label for="pop-min">Population Threshold:</label>
+                            <input type="range" name="pop-min" id="pop-min" value="70" min="50" max="100">
+                            <label for="pop-max">Population Threshold:</label>
+                            <input type="range" name="pop-max" id="pop-max" value="90" min="50" max="100">
+                        </div>
+                    </li>
+                    <li>
+                        <div data-role="rangeslider">
+                            <label for="voting-min">Voting Threshold:</label>
+                            <input type="range" name="voting-min" id="voting-min" value="70" min="50" max="100">
+                            <label for="voting-max">Voting Threshold:</label>
+                            <input type="range" name="voting-max" id="voting-max" value="90" min="50" max="100">
+                        </div>
+                    </li>
+
+                    <button class="startBtn" onclick="startPhase0()">Start</button>
+                </ul>
+            </li>
+
+            <li><a href="">Phase 1</a>
+
+                <ul class="submenu">
+                    <label for="race-dropdown">Select Race(s):</label>
+                    <select  id="race-dropdown" multiple size="7">
+                        <option value="WHITE">White</option>
+                        <option value="AFRICAN_AMERICANS">African American</option>
+                        <option value="HISPANIC">Hispanic</option>
+                        <option value="ASIAN">Asian</option>
+                        <option value="AMERICAN_INDIAN">American Indian</option>
+                        <option value="NATIVE_AMERICAN">Native American</option>
+                        <option value="OTHERS">Others</option>
+                    </select>
+                    <li class="pop-slider">
+                        <div data-role="rangeslider">
+                            <label for="phase1-pop-min">Population Threshold:</label>
+                            <input type="range" name="pop-min" id="phase1-pop-min" value="70" min="50" max="100">
+                            <label for="phase1-pop-max">Population Threshold:</label>
+                            <input type="range" name="pop-max" id="phase1-pop-max" value="90" min="50" max="100">
+                        </div>
+                    </li>
+                    <li class="districts-slider">
+                            <label for="phase1-districts">Desired # of Districts:</label>
+                            <input type="range" name="numOfdistrcits" id="phase1-districts" value="6" min="6" max="60" onchange="changeOnNumOfDistricts()">
+                    </li>
+                    <li class="maj-min-districts-slider">
+                        <label for="majmin-districts" id="maj-min-slider">Desired # of Maj-Min Districts:</label>
+                        <input type="range" name="numOfMajMindistrcits" id="majmin-districts" value="0" min="0" max="20">
+                    </li>
+                    <label for="checkbox">Run Continuously</label>
+                    <input type="checkbox" id="checkbox" name="runPreference"><br>
+                    <button class="startBtn" onclick="startPhase1()">Start</button>
+                </ul>
+            </li>
+            <li><a href="">Phase 2</a>
+                <ul class="submenu">
+                    <li class="districts-slider">
+                        <label for="phase2-polFairness">Political Fairness:</label>
+                        <input type="range" name="polFairness" id="phase2-polFairness" value="50" min="0" max="100">
+                    </li>
+                    <li class="districts-slider">
+                        <label for="phase2-popEquality">Population Equality:</label>
+                        <input type="range" name="popEquality" id="phase2-popEquality" value="50" min="0" max="100">
+                    </li>
+                    <button class="startBtn" onclick="startPhase2()">Start</button>
+                    <button class="startBtn" onclick="stopPhase2()">Stop</button>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</div>
+<div class="infoPanel" id="infoPanel" style="padding-top:5px;">
+    <a href="javascript:void(0)" class="infoCloseBtn" id="closeInfo" onclick="closeInfo()">&times;</a>
+    <div class="infoImgDiv">
+        <img src="img/info.png" class="infoImg" >
+    </div>
+    <div id="stateChart">
+        <div id="statePieChart" style="float: left"></div>
+        <div id="stateBarChart" style="float: right"></div>
+    </div>
+    <div id="district-precinct-Chart">
+        <div id="district-precinct-chart-title" style="display:none; width:500px;">District</div>
+        <div id="pieChart" style="float: left"></div>
+        <div id="barChart" style="float: right; position: absolute; right: 0px"></div>
+    </div>
+    <div class="table">
+        <h1 style="text-align: center; display: none;">Summary Datatable</h1>
+        <table id="summary-table" class="display cell-border compact stripe" style="width:100%;"></table>
+        <h1 style="text-align: center; display: none;">Each Precinct Datatable</h1>
+        <table id="table" class="display cell-border compact stripe" style="width:100%;"></table>
+        <h1 style="text-align: center; display: none;">State</h1>
+        <table id="state-pop-race-table" class="display cell-border compact stripe" style="width:100%;"></table>
+        <h1 style="text-align: center; display: none;">Current Districts</h1>
+        <table id="district-pop-race-table" class="display cell-border compact stripe" style="width:100%;"></table>
+    </div>
+    <div id="phase2" style="display: none">
+        <h1>Phase 2 Summary</h1>
+        <h1>Old vs New Gerrymandering</h1>
+        <table id=phase2-table class="display cell-border compact stripe" style="width:100%;"></table>
+        <h1>Simulated Annealing</h1>
+        <label>Precinct ID : <span id="precinctId"> </span></label>
+        <label>Target District ID : <span id="districtId"> </span></label>
+        <label>Old Objective Function  : <span id="oldObjFunc"> </span></label>
+        <label>New Objective Function  : <span id="newObjFunc"> </span></label>
+        <label>Decision  : <span id="decision"> </span></label>
+        <label>Algorithm State  : <span id="algState"> </span></label>
+    </div>
+</div>
+<div class="main">
+    <div id="map">
+        <div id="phase1Btn" style="display: none">
+            <button id="original" onclick="clickOnOriginal()">Original</button>
+            <button id="new" onclick="clickOnNew()">New</button>
+        </div>
+        <div id="cont" style="display:none">
+            <button id="continueBtn" onclick="startPhase1()">Continue</button>
+        </div>
+    </div>
+    <div class="loader" id="loader"></div>
+</div>
+<script>
+    window.addEventListener('resize', function() {
+        document.getElementById("map").style.width = String(window.innerWidth) + "px";
+        document.getElementById("map").style.height = String(window.innerHeight - 75) + "px";
+    });
+
+    document.getElementById("map").style.width = String(window.innerWidth) + "px";
+    document.getElementById("map").style.height = String(window.innerHeight - 75) + "px";
+
+    var map = L.map('map').setView([38.5, -96], 5);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    map.on('zoomend', function() {
+        if(!phase1Btn && !phase2Btn ){
+            if(isDataBeingRetrieved){
+                return;
+            }else if(kyDataRetrieved && selectedState == "KY" ){
+                return;
+            }else if(txDataRetrieved && selectedState == "TX"){
+                return;
+            }
+            else if(laDataRetrieved && selectedState == "LA"){
+                return;
+            }
+
+            if(!precinctBtn && !districtBtn){
+                changeMapDataDependingOnZoomLevel();
+            }
+        }
+    });
+    map.setMaxBounds(map.getBounds());
+    map.setMinZoom(map.getZoom());
+
+    var geojson = L.geoJson(statesData, {
+        style: stateStyle,
+        onEachFeature: onEachFeatureForState
+    }).addTo(map);
+
+    var legend = L.control({position: 'bottomright'});
+
+    // Load the Visualization API and the corechart package.
+    google.charts.load('current', {'packages':['corechart']});
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.charts.setOnLoadCallback(initChart);
+
+    $('#summary-table').on( 'mouseover', 'tbody tr', function () {
+        var rowData = summaryTable.row( this ).data();
+        highlightVotingBloc(rowData);
+        // ... show tool tip
+    } );
+
+    $('#summary-table').on( 'mouseleave', 'tbody tr', function () {
+        if(!precinctBtn && !districtBtn)
+            changeMapDataDependingOnZoomLevel();
+        else if(precinctBtn)
+            changeMapData(precinctsData);
+        else
+            changeMapData(districtsData);
+    } );
+
+    $('#district-pop-race-table').on( 'mouseover', 'tbody tr', function () {
+        var rowData = districtTable.row( this ).data();
+        console.log(rowData);
+        highlightCluster(rowData);
+        // ... show tool tip
+    } );
+
+    $('#district-pop-race-table').on( 'mouseleave', 'tbody tr', function () {
+        changeMapData(phase1PrecinctsData);
+    } );
+
+
+
+</script>
+
+</body>
+
+</html>

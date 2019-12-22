@@ -1,0 +1,44 @@
+element.style {
+    margin: 0;
+}
+.heading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 5px;
+    padding-top: 2px;
+    background-color: black;
+}
+.parallax {
+    background-image: url(../img/homepage.gif);
+    height: 5em;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 15em;
+    /* background-attachment: fixed; */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: 5em;
+
+}
+.homeBtn{
+    margin: 3em;
+    width: 150px;
+    height: 50px;
+    border:solid 2px black;
+    border-radius: 5px;
+    background:black;
+    color:white;
+    font-size: 25px;
+}
+.formBtn{
+    padding-bottom: 5em;
+
+}
+
+.homeBtn:hover {
+    background:white;
+    color:black;
+}

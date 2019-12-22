@@ -1,0 +1,127 @@
+.sidebar{
+    height: 100%;
+    width: 0;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 20000;
+    background-color: black;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.sidebar a {
+    text-decoration: none;
+    font-size: 25px;
+    color: black;
+    display: block;
+    transition: 0.3s;
+    padding-top: 10px;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    font-size: 36px;
+    color: white;
+    text-decoration: none;
+}
+.sidebar .closebtn:hover{
+    color:darkred;
+}
+#input{
+    position:absolute;
+    left:8px;
+    align-self: center;
+
+}
+.openbtn {
+    width: 100%;
+    font-size: 2em;
+    cursor: pointer;
+    background-color: transparent;
+    color: white !important;
+    border-color: white;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+a {
+    text-decoration: none !important;
+}
+.openbtn:hover {
+    color: darkblue!important;
+    text-shadow: 0 0px 0 darkblue;
+}
+.navigation {
+    width: 300px;
+}
+
+.mainmenu, .submenu {
+    list-style: none;
+    padding: 0;
+    padding-top: 10px;
+    margin: 0;
+}
+.mainmenu .menuTop{
+    padding-top: 3em;
+}
+.mainmenu a {
+    display: block;
+    background-color: #C5C5C5;
+    text-decoration: none;
+    padding: 10px;
+    color: #000;
+}
+
+.mainmenu a:hover {
+    background-color: white;
+}
+
+.mainmenu h1{
+    color: darkred;
+    padding-top: 1em;
+    font-family: "Comic Sans MS";
+    text-align: center;
+    font-size: 2.5em;
+    text-shadow: 0px 1px 0px darkblue;
+}
+.mainmenu li:hover .submenu {
+    display: block;
+    max-height: 500px;
+}
+.mainmenu .startBtn {
+  background-color:darkblue ;
+    color: white;
+    font-family: bold;
+}
+.mainmenu .startBtn:hover {
+    color: greenyellow;
+    background-color:darkblue;
+    font-family: bold;
+}
+
+
+.submenu a {
+    background-color:white ;
+    padding-bottom: 1em;
+}
+
+.submenu a:hover {
+    background-color: #999;
+}
+
+.submenu {
+    overflow: hidden;
+    max-height: 0;
+    -webkit-transition: all 0.5s ease-out;
+}
+.submenu label{
+    color: white;
+}
+#race-dropdown{
+    opacity: 1!important;
+}
+#race-dropdown-button{
+    height: 4em !important;
+}

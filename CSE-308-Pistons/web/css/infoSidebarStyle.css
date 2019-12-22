@@ -1,0 +1,129 @@
+#infoSlider{
+    position: absolute;
+    right: 8px;
+    align-self: center;
+}
+.infoOpenBtn {
+    width: 100%;
+    font-size: 2em;
+    cursor: pointer;
+    background-color: transparent;
+    color: white !important;
+    border-color: white;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.infoOpenBtn:hover{
+    color: darkblue !important;
+    text-shadow: 0 0px 0 darkblue;
+}
+.infoPanel{
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    z-index: 20000;
+    background-color: black;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.infoPanel .infoCloseBtn{
+    position: absolute;
+    top: 0;
+    left: 5px;
+    font-size: 36px;
+    text-decoration: none;
+    color: white;
+    margin-bottom:50px;
+}
+
+.infoImgDiv{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+}
+.infoImg{
+    height: 3em;
+    width: auto;
+}
+.infoPanel #dropdown{
+    width: 350px;
+    height: 30px;
+    font-size: 20px;
+    float: top;
+    background-color: black;
+    border: none;
+    color: white;
+}
+
+.infoPanel #stateChart{
+    position: absolute;
+    top: 75px;
+}
+
+.infoPanel #district-precinct-Chart{
+    position: absolute;
+    top: 375px;
+    /*width: 100%;*/
+}
+
+.infoPanel #district-precinct-chart-title{
+    display: block;
+    text-align: center;
+    font-size: 1.5em;
+    background-color: midnightblue;
+    color: white;
+}
+
+.table h1{
+    top:-3px;
+    font-size: 1.5em;
+    text-align: center;
+    color: white;
+}
+
+.table #summary-table_wrapper{
+    background-color: gainsboro;
+    font-size: 0.8em;
+    text-align: center;
+}
+
+.table #table_wrapper{
+    background-color: gainsboro;
+    font-size: 0.8em;
+    text-align: center;
+}
+
+.table #state-pop-race-table_wrapper{
+    background-color: gainsboro;
+    font-size: 0.8em;
+    text-align: center;
+}
+
+.table #district-pop-race-table_wrapper{
+    background-color: gainsboro;
+    font-size: 0.8em;
+    text-align: center;
+}
+
+#phase2{
+    padding-bottom: 1em;
+}
+#phase2 #phase2-table_wrapper{
+    background-color: gainsboro;
+    font-size: 0.8em;
+    text-align: center;
+    color: black;
+}
+
+#phase2 h1{
+    color:white;
+}
+
+#phase2 label{
+    color:white;
+}

@@ -1,0 +1,26 @@
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+             version="2.1">
+
+    <persistence-unit name="persistence">
+        <description>Hibernate Entity Manager</description>
+        <properties>
+           <!-- <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false" />
+            <property name="hibernate.generate_statistics" value="true" />
+            <property name="hibernate.cache.use_second_level_cache" value="false" />
+            <property name="hibernate.cache.use_query_cache" value="false" />
+                        <property name="hibernate.jdbc.fetch_" value="5000" />
+-->
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://mysql4.cs.stonybrook.edu:3306/pistons" />
+            <property name="javax.persistence.jdbc.user" value="pistons" />
+            <property name="javax.persistence.jdbc.password" value="BigBois" />
+
+        </properties>
+
+    </persistence-unit>
+
+</persistence>
