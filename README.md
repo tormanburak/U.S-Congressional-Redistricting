@@ -25,9 +25,9 @@ The system will allow for the generation of congressional district boundaries wi
   <b>Back-End : </b>Java. OOP language, fits well with the complex design of the system.<br>
   <b>Database : </b>MySQL, standard CRUD operations.<br>
   <b>Preprocessing : </b> Python. Great for data science related issues, in this case the sub-system has to retrieve raw data from multiple data source, analyze, clean, and put it together to feed it to DB.<br>
-  <b><a href="https://leafletjs.com/" target="_blank">Leaflet</a> : </b>Leaflet is a widely used open source JavaScript library used to build web mapping applications. Used for mapping state, district, precinct borders. Another alternative can be Google Maps<br>
+  <b><a href="https://leafletjs.com/" target="_blank">Leaflet</a> : </b>Leaflet is a widely used open source JavaScript library used to build web mapping applications. Another alternative can be Google Maps<br>
   <b><a href="https://hibernate.org/" target="_blank">Hibernate</a> : </b>Hibernate ORM is an object-relational mapping tool for the Java programming language. It provides a framework for mapping an object-oriented domain model to a relational database.<br>
-  <b><a href="https://pypi.org/project/Fiona/" target="_blank">Fiona</a> : </b>Pyhon library for reading and writing spatial data files. Used for preprocessing.
+  <b><a href="https://pypi.org/project/Fiona/" target="_blank">Fiona</a> : </b>Python library for reading and writing spatial data files. Used for preprocessing component.
   </ul
   
   <b>Demo pictures : </b><br>
