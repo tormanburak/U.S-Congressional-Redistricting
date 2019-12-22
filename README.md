@@ -31,4 +31,11 @@ The system will allow for the generation of congressional district boundaries wi
   </ul
   
   <b>Demo pictures : </b><br>
-  
+  <p>(Kentucky precincts zoomed in)</p>
+  <img src="https://github.com/tormanburak/U.S-Congressional-Redistricting/blob/master/demopics/ss1.PNG"></img>
+  <p>(Texas district boundaries)</p>
+  <img src="https://github.com/tormanburak/U.S-Congressional-Redistricting/blob/master/demopics/ss2.PNG"></img>
+  <b>(Texas precinct boundaries)</b>
+  <img src="https://github.com/tormanburak/U.S-Congressional-Redistricting/blob/master/demopics/ss3.PNG"></img>
+  <p>(Texas precinct boundaries zoomed in)</p>
+  <img src="https://github.com/tormanburak/U.S-Congressional-Redistricting/blob/master/demopics/ss4.PNG"></img>
